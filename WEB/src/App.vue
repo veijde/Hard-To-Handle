@@ -1,20 +1,43 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<script>
+export default {
+  data() {
+    return {
+      league: []
+    }
+  },
+  methods: {
+    async getData() {
+      const res = await fetch('http://localhost:3000/api/league/get/643eeb212c5958f952816d4c')
+
+      console.log(res)
+      
+      const data = await res.data
+      
+      console.log(data)
+
+      return data
+    }
+  },
+  async created() {
+    this.league = await this.getData()
+  },
+};
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <div class="border rounded p-3 top-25 start-50">
+    <h1>
+      <!-- Hard to Handle P+ seeding league -->
+      {{ league.name }}
+    </h1>
+    <p>
+      Een netplay league waar iedereen een keer tegen iedereen speelt om de seeding voor het toernooi bij Tjon te bepalen
+    </p>
+    <h5>Deelnemers:</h5>
+    <ul>
+      <li>Vincent</li>
+    </ul>
+  </div>
 </template>
 
 <style scoped>
