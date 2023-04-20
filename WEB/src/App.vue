@@ -44,7 +44,7 @@ export default {
     <div class="border rounded p-3">
       <div v-if="loading" class="justify-content-center">
         <h1>ff wachten makker</h1>
-        <p>Ik ben gierig dus de data staat op een gratis host die elke 15 minuten zonder activiteit in standby gaat lmao.</p>
+        <p>Ik ben gierig dus de data staat op een gratis host die elke 15 minuten zonder activiteit in standby gaat lmao. Je hoeft niet te refreshen ofzo. Shit is dynamisch</p>
       </div>
       <div v-else>
         <h1>
@@ -53,6 +53,15 @@ export default {
         <p>
           {{ league.description }}
         </p>
+        <p>Vanaf dat iedereen die mee wilt doen in de lijst sta kijken we wel ff wanneer</p>
+        <h5>Wat heb je nodig om mee te doen?</h5>
+        <ul class="m-1">
+          <li><a href="https://projectplusgame.com/download">P+ 2.3.2</a></li>
+          <li><a href="https://vimm.net/vault/18177">Brawl ISO</a></li>
+          <li><a href="https://www.smashladder.com/guides/view/26oz/controller-guide-2-0">Gamecube controller en een GCC adapter</a></li>
+          <li>Internet enzo</li>
+        </ul>
+        <br>
         <h5>Deelnemers:</h5>
         <ul class="m-1" v-for="participant in league.participants">
           <li>{{ participant }}</li>
@@ -60,7 +69,7 @@ export default {
         <div>
           <form @submit="AddParticipant">
             <input v-model="name" name="name" type="text" class="m-3">
-            <button class="btn btn-secondary m-3">Ayyy ik doe ook mee 😎</button>
+            <button class="m-3 p-2 border-0 rounded" style="background-color: rgb(0, 189, 126); color: rgb(24, 24, 24);">Ayyy ik doe ook mee 😎</button>
           </form>
         </div>
       </div>
