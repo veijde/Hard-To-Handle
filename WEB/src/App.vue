@@ -2,20 +2,35 @@
 export default {
   data() {
     return {
-      league: []
+      league: {},
+      name: ''
     }
   },
   methods: {
     async getData() {
       const res = await fetch('http://localhost:3000/api/league/get/643eeb212c5958f952816d4c')
-
-      console.log(res)
-      
-      const data = await res.data
-      
-      console.log(data)
-
+      const data = await res.json()
       return data
+    },
+
+    async AddParticipant(e) {
+      e.preventDefault()
+      if (!this.name) {
+        alert('Vriend zet die naam')
+        return
+      }
+
+      console.log(this.name)
+
+      this.league.participants = [...this.league.participants, this.name]
+
+      const res = await fetch('http://localhost:3000/api/league/update/643eeb212c5958f952816d4c', {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(this.league)
+      })
     }
   },
   async created() {
@@ -25,18 +40,26 @@ export default {
 </script>
 
 <template>
-  <div class="border rounded p-3 top-25 start-50">
-    <h1>
-      <!-- Hard to Handle P+ seeding league -->
-      {{ league.name }}
-    </h1>
-    <p>
-      Een netplay league waar iedereen een keer tegen iedereen speelt om de seeding voor het toernooi bij Tjon te bepalen
-    </p>
-    <h5>Deelnemers:</h5>
-    <ul>
-      <li>Vincent</li>
-    </ul>
+  <div class="d-flex justify-content-center">
+    <div class="border rounded p-3">
+      <h1>
+        <!-- Hard to Handle P+ seeding league -->
+        {{ league.name }}
+      </h1>
+      <p>
+        {{ league.description }}
+      </p>
+      <h5>Deelnemers:</h5>
+      <ul class="m-1" v-for="participant in league.participants">
+        <li>{{ participant }}</li>
+      </ul>
+      <div>
+        <form @submit="AddParticipant">
+          <input v-model="name" name="name" type="text" class="m-3">
+          <button class="btn btn-secondary m-3">Ayyy ik doe ook mee</button>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
