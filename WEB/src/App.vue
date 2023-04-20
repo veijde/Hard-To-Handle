@@ -53,7 +53,7 @@ export default {
         <p>
           {{ league.description }}
         </p>
-        <p>Vanaf dat iedereen die mee wilt doen in de lijst sta kijken we wel ff wanneer</p>
+        <p>Vanaf dat iedereen die mee wilt doen in de lijst staat kijken we wel ff wanneer. Dan gooi ik ook al deze inschrijf rommel weg en zet ik hier de regels en het formaat.</p>
         <h5>Wat heb je nodig om mee te doen?</h5>
         <ul class="m-1">
           <li><a href="https://projectplusgame.com/download">P+ 2.3.2</a></li>
