@@ -31,6 +31,7 @@ export default {
         },
         body: JSON.stringify(this.league)
       })
+      this.name = '';
     }
   },
   async created() {
@@ -68,7 +69,7 @@ export default {
         </ul>
         <div>
           <form @submit="AddParticipant">
-            <input v-model="name" name="name" type="text" class="m-3">
+            <input v-model="name" name="name" type="text" class="m-3" placeholder="Naam">
             <button class="m-3 p-2 border-0 rounded" style="background-color: rgb(0, 189, 126); color: rgb(24, 24, 24);">Ayyy ik doe ook mee 😎</button>
           </form>
         </div>
