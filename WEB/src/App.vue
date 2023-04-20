@@ -8,7 +8,7 @@ export default {
   },
   methods: {
     async getData() {
-      const res = await fetch('h2h-api/api/league/get/643eeb212c5958f952816d4c')
+      const res = await fetch('https://h2h-api.onrender.com/api/league/get/643eeb212c5958f952816d4c')
       const data = await res.json()
       return data
     },
@@ -24,7 +24,7 @@ export default {
 
       this.league.participants = [...this.league.participants, this.name]
 
-      const res = await fetch('h2h-api/api/league/update/643eeb212c5958f952816d4c', {
+      const res = await fetch('https://h2h-api.onrender.com/api/league/update/643eeb212c5958f952816d4c', {
         method: 'PUT',
         headers: {
           'Content-type': 'application/json'
