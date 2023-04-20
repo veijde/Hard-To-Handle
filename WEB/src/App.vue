@@ -3,24 +3,24 @@ export default {
   data() {
     return {
       league: {},
-      name: ''
+      name: '',
+      loading: true
     }
   },
   methods: {
     async getData() {
       const res = await fetch('https://h2h-api.onrender.com/api/league/get/643eeb212c5958f952816d4c')
       const data = await res.json()
+      this.loading = false;
       return data
     },
 
     async AddParticipant(e) {
       e.preventDefault()
       if (!this.name) {
-        alert('Vriend zet die naam')
+        alert('Makker...')
         return
       }
-
-      console.log(this.name)
 
       this.league.participants = [...this.league.participants, this.name]
 
@@ -42,22 +42,27 @@ export default {
 <template>
   <div class="d-flex justify-content-center">
     <div class="border rounded p-3">
-      <h1>
-        <!-- Hard to Handle P+ seeding league -->
-        {{ league.name }}
-      </h1>
-      <p>
-        {{ league.description }}
-      </p>
-      <h5>Deelnemers:</h5>
-      <ul class="m-1" v-for="participant in league.participants">
-        <li>{{ participant }}</li>
-      </ul>
-      <div>
-        <form @submit="AddParticipant">
-          <input v-model="name" name="name" type="text" class="m-3">
-          <button class="btn btn-secondary m-3">Ayyy ik doe ook mee</button>
-        </form>
+      <div v-if="loading" class="justify-content-center">
+        <h1>ff wachten makker</h1>
+        <p>Ik ben gierig dus de data staat op een gratis host die elke 15 minuten zonder activiteit in standby gaat lmao.</p>
+      </div>
+      <div v-else>
+        <h1>
+          {{ league.name }}
+        </h1>
+        <p>
+          {{ league.description }}
+        </p>
+        <h5>Deelnemers:</h5>
+        <ul class="m-1" v-for="participant in league.participants">
+          <li>{{ participant }}</li>
+        </ul>
+        <div>
+          <form @submit="AddParticipant">
+            <input v-model="name" name="name" type="text" class="m-3">
+            <button class="btn btn-secondary m-3">Ayyy ik doe ook mee 😎</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
