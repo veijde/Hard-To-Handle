@@ -35,7 +35,6 @@ export default {
     }
   },
   async created() {
-    this.league = await this.getData()
   },
 };
 </script>
@@ -43,36 +42,33 @@ export default {
 <template>
   <div class="d-flex justify-content-center">
     <div class="border rounded p-3">
-      <div v-if="loading" class="justify-content-center">
-        <h1>ff wachten makker</h1>
-        <p>Ik ben gierig dus de data staat op een gratis host die elke 15 minuten zonder activiteit in standby gaat lmao. Je hoeft niet te refreshen ofzo. Shit is dynamisch</p>
-      </div>
-      <div v-else>
-        <h1>
-          {{ league.name }}
-        </h1>
-        <p>
-          {{ league.description }}
-        </p>
-        <p>Vanaf dat iedereen die mee wilt doen in de lijst staat kijken we wel ff wanneer. Dan gooi ik ook al deze inschrijf rommel weg en zet ik hier de regels en de round robin bracket en standings.</p>
-        <h5>Wat heb je nodig om mee te doen?</h5>
-        <ul class="m-1">
-          <li><a href="https://projectplusgame.com/download">P+ 2.3.2</a></li>
-          <li><a href="https://vimm.net/vault/18177">Brawl ISO</a></li>
-          <li><a href="https://www.smashladder.com/guides/view/26oz/controller-guide-2-0">Gamecube controller en een GCC adapter</a></li>
-          <li>Internet enzo</li>
-        </ul>
-        <br>
-        <h5>Deelnemers:</h5>
-        <ul class="m-1" v-for="participant in league.participants">
-          <li>{{ participant }}</li>
-        </ul>
-        <div>
-          <form @submit="AddParticipant">
-            <input v-model="name" name="name" type="text" class="m-3" placeholder="Naam">
-            <button class="m-3 p-2 border-0 rounded" style="background-color: rgb(0, 189, 126); color: rgb(24, 24, 24);">Ayyy ik doe ook mee 😎</button>
-          </form>
-        </div>
+      <h1>
+        Hard to Händel P+ seeding league
+      </h1>
+      <br>
+      <h5>Regels</h5>
+      <ul class="m-1">
+        <li>Alle potjes zijn best of 3</li>
+        <li>Standaard stagelist. Random stages om het fast en fun te houden</li>
+      </ul>
+      <br>
+      <h5>Wanneer</h5>
+      <p>Best ff kijken of we 1 dag kunnen vinden waarop de meeste mensen kunnen om zo veel mogelijk potjes dan te doen.</p>
+      <p>Als we niet alles kunnen doen kunnen we kijken voor een tweede dag of kunnen we de rest van de potjes gewoon laten
+        doorgaan wanneer de twee mensen de nog moeten spelen kunnen.</p>
+      <br>
+      <h5>Nodig om mee te doen</h5>
+      <ul class="m-1">
+        <li><a href="https://projectplusgame.com/download">P+ 2.3.2</a></li>
+        <li><a href="https://vimm.net/vault/18177">Brawl ISO</a></li>
+        <li><a href="https://www.smashladder.com/guides/view/26oz/controller-guide-2-0">Gamecube controller en een GCC
+            adapter</a></li>
+        <li>Internet enzo</li>
+      </ul>
+      <br>
+      <div class="justify-content-center">
+        <iframe class="d-block justify-content-center" src="https://challonge.com/nl/5f5wbzhc/module?theme=2&match_width_multiplier=0.5&show_standings=1"
+          width="100%" height="500" frameborder="0" scrolling="auto"></iframe>
       </div>
     </div>
   </div>
@@ -104,5 +100,4 @@ header {
     place-items: flex-start;
     flex-wrap: wrap;
   }
-}
-</style>
+}</style>
